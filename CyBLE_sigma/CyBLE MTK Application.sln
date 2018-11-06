@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexadecimalTextBox", "Hexad
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B4F04085-2BD3-43ED-B47A-293A54A9BDC0}"
 	ProjectSection(SolutionItems) = preProject
+		Readme.txt = Readme.txt
 		TempFile.txt = TempFile.txt
 	EndProjectSection
 EndProject

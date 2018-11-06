@@ -611,9 +611,6 @@
     <None Include="refresh-time-24.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AppReleaseNotes.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="Go1.png" />
     <Content Include="Readme.txt" />
     <None Include="Resources\refresh_green.bmp" />
