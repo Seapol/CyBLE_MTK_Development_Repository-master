@@ -144,13 +144,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Cypress_Link_SQL2005">
-      <HintPath>..\..\..\..\CyBLE_MTK_Application - sigma\CyBLE_MTK_Application\bin\Release\Cypress_Link_SQL2005.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\GitHub\CyBLE_MTK_Application_DEV\CyBLE_MTK_Development_Repository-master\CyBLE_sigma\CyBLE_MTK_Application\Cypress_Link_SQL2005.dll</HintPath>
     </Reference>
     <Reference Include="GeneralLinkSql">
-      <HintPath>..\..\..\..\..\GitHub2\CyWork\CyBLE_MTK\CyBLE_MTK_Application\SourceCode\CyBLE_MTK_Application\GeneralLinkSql.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\GitHub\CyBLE_MTK_Application_DEV\CyBLE_MTK_Development_Repository-master\CyBLE_sigma\CyBLE_MTK_Application\GeneralLinkSql.dll</HintPath>
     </Reference>
     <Reference Include="GeneralLinkSqlLocal">
-      <HintPath>..\..\..\..\..\Users\cysp\Documents\My Received Files\Sigmatron\shopfloor library\GeneralLinkSqlLocal.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\GitHub\CyBLE_MTK_Application_DEV\CyBLE_MTK_Development_Repository-master\CyBLE_sigma\CyBLE_MTK_Application\GeneralLinkSqlLocal.dll</HintPath>
     </Reference>
     <Reference Include="Ivi.Visa.Interop, Version=5.8.0.0, Culture=neutral, PublicKeyToken=a128c98f1d7717c1, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
