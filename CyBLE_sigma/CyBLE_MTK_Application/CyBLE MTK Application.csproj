@@ -61,7 +61,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>bin\CyBLE_MTK_Release_4.0.7\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -144,13 +144,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Cypress_Link_SQL2005">
-      <HintPath>..\..\..\..\..\..\..\GitHub\CyBLE_MTK_Application_DEV\CyBLE_MTK_Development_Repository-master\CyBLE_sigma\CyBLE_MTK_Application\Cypress_Link_SQL2005.dll</HintPath>
+      <HintPath>.\Cypress_Link_SQL2005.dll</HintPath>
     </Reference>
     <Reference Include="GeneralLinkSql">
-      <HintPath>..\..\..\..\..\..\..\GitHub\CyBLE_MTK_Application_DEV\CyBLE_MTK_Development_Repository-master\CyBLE_sigma\CyBLE_MTK_Application\GeneralLinkSql.dll</HintPath>
+      <HintPath>.\GeneralLinkSql.dll</HintPath>
     </Reference>
     <Reference Include="GeneralLinkSqlLocal">
-      <HintPath>..\..\..\..\..\..\..\GitHub\CyBLE_MTK_Application_DEV\CyBLE_MTK_Development_Repository-master\CyBLE_sigma\CyBLE_MTK_Application\GeneralLinkSqlLocal.dll</HintPath>
+      <HintPath>.\GeneralLinkSqlLocal.dll</HintPath>
     </Reference>
     <Reference Include="Ivi.Visa.Interop, Version=5.8.0.0, Culture=neutral, PublicKeyToken=a128c98f1d7717c1, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
