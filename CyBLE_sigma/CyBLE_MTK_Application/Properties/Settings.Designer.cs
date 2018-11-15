@@ -1419,5 +1419,17 @@ namespace CyBLE_MTK_Application.Properties {
                 this["ReopenMTKHostSerialPortIfMissing"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int DUTModelLengthOverride {
+            get {
+                return ((int)(this["DUTModelLengthOverride"]));
+            }
+            set {
+                this["DUTModelLengthOverride"] = value;
+            }
+        }
     }
 }

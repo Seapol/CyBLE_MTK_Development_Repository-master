@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CyBLE_MTK_Application</RootNamespace>
     <AssemblyName>CyBLE MTK Application</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <SignManifests>false</SignManifests>
@@ -151,6 +151,9 @@
     </Reference>
     <Reference Include="GeneralLinkSqlLocal">
       <HintPath>.\GeneralLinkSqlLocal.dll</HintPath>
+    </Reference>
+    <Reference Include="HexadecimalTextBox">
+      <HintPath>..\..\..\..\..\..\..\GitHub\CyBLE_MTK_Application_DEV\CyBLE_MTK_Application - fittec\HexadecimalTextBox\bin\Release\HexadecimalTextBox.dll</HintPath>
     </Reference>
     <Reference Include="Ivi.Visa.Interop, Version=5.8.0.0, Culture=neutral, PublicKeyToken=a128c98f1d7717c1, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
@@ -585,12 +588,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="down.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HexadecimalTextBox\HexadecimalTextBox.csproj">
-      <Project>{D72BE98C-B5A2-4321-93D8-19C775EBDD9A}</Project>
-      <Name>HexadecimalTextBox</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Go.png" />

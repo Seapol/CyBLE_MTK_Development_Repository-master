@@ -2,6 +2,8 @@ Release notes:
 2018-11-06 (v4.0.7)
 1.Push to GitHub Repository of CyBLE_MTK_Development_Repository-master
 2.Move AppReleaseNotes to Readme.txt
+3.Truncate different model name from SN string for different factory
+4.Degrade .NET Framework Platform from 4.7.1 to 4.0 so as to be compatible with old computers
 
 2018-10-25 (v4.0.6)
 1.change the length of Model from 8 to 9.

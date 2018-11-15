@@ -4171,11 +4171,26 @@ namespace CyBLE_MTK_Application
 
                 if (SerialNumber.Length > 0)
                 {
+                    /*
+                     * Truncate different model name from SN string for different factory.
+                     */
+                    int ModelLen = CyBLE_MTK_Application.Properties.Settings.Default.DUTModelLengthOverride;
 
+                    if (ModelLen <= 0)
+                    {
+                        if (m_SFCS.GetType() == Type.GetType("CyBLE_MTK_Application.SFCS_SIGMA"))
+                        {
+                            ModelLen = 9;
+                        }
+                        else
+                        {
+                            ModelLen = 8;
+                        }
+                    }
 
                     if (SerialNumber.Length >= 9)
                     {
-                        Model = SerialNumber.Substring(0, 9);
+                        Model = SerialNumber.Substring(0, ModelLen);
                     }
                     else
                     {
