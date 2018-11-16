@@ -220,6 +220,7 @@ namespace CyBLE_MTK_Application
         {
             sample_failure_result_message = "Fail";
 
+            
 
             if (criterion_per_sample.ToUpper() == EnumPassConPerSample.AVERAGE.ToString())
             {
@@ -229,20 +230,25 @@ namespace CyBLE_MTK_Application
                     {
                         //Pass
                         ERRORCODE_DUTCurrentMeasureFailure = ECCS.ERRORCODE_ALL_PASS;
+                        TestResult.Measured += "#" + dUTCurrent.average.ToString();
                         return true;
                     }
                     else
                     {
+                        //Fail
                         ERRORCODE_DUTCurrentMeasureFailure = ECCS.ERROR_CODE_DMM_HIGH;
-                        sample_failure_result_message += "#" + dUTCurrent.average.ToString("D4");
+                        sample_failure_result_message += "#" + dUTCurrent.average.ToString();
+                        TestResult.Measured += "#" + dUTCurrent.average.ToString();
                         TestStatusUpdate(MTKTestMessageType.Failure, sample_failure_result_message);
                     }
                     
                 }
                 else
                 {
+                    //Fail
                     ERRORCODE_DUTCurrentMeasureFailure = ECCS.ERROR_CODE_DMM_LOW;
-                    sample_failure_result_message += "#" + dUTCurrent.average.ToString("D4");
+                    sample_failure_result_message += "#" + dUTCurrent.average.ToString();
+                    TestResult.Measured += "#" + dUTCurrent.average.ToString();
                     TestStatusUpdate(MTKTestMessageType.Failure, sample_failure_result_message);
                 }
             }
@@ -254,12 +260,15 @@ namespace CyBLE_MTK_Application
                     {
                         //Pass
                         ERRORCODE_DUTCurrentMeasureFailure = ECCS.ERRORCODE_ALL_PASS;
+                        TestResult.Measured += "#" + dUTCurrent.average.ToString();
                         return true;
                     }
                     else
                     {
+                        //Fail
                         ERRORCODE_DUTCurrentMeasureFailure = ECCS.ERROR_CODE_DMM_HIGH;
-                        sample_failure_result_message += "#" + dUTCurrent.average.ToString("D4");
+                        sample_failure_result_message += "#" + dUTCurrent.average.ToString();
+                        TestResult.Measured += "#" + dUTCurrent.average.ToString();
                         TestStatusUpdate(MTKTestMessageType.Failure, sample_failure_result_message);
                     }
                     
@@ -267,7 +276,8 @@ namespace CyBLE_MTK_Application
                 else
                 {
                     ERRORCODE_DUTCurrentMeasureFailure = ECCS.ERROR_CODE_DMM_LOW;
-                    sample_failure_result_message += "#" + dUTCurrent.average.ToString("D4");
+                    sample_failure_result_message += "#" + dUTCurrent.average.ToString();
+                    TestResult.Measured += "#" + dUTCurrent.average.ToString();
                     TestStatusUpdate(MTKTestMessageType.Failure, sample_failure_result_message);
                 }
 
@@ -283,6 +293,8 @@ namespace CyBLE_MTK_Application
             MTKTestError RetVal = MTKTestError.TestFailed;
 
             this.InitializeTestResult();
+
+            TestResult.Measured = " Result: ";
 
             if (this.DUTConnectionMode == DUTConnMode.BLE)
             {
@@ -316,7 +328,7 @@ namespace CyBLE_MTK_Application
                         if (!DoesSamplePass(MTKInstruments.DUTCurrent) && RetVal == MTKTestError.Pending)
                         {
                             RetVal = MTKTestError.TestFailed;
-                            break;
+                            //break;
                         }
                         else
                         {
@@ -338,11 +350,12 @@ namespace CyBLE_MTK_Application
                 else
                 {
                     TestStatusUpdate(MTKTestMessageType.Failure, "Fail");
-                    TestResult.Result = "FAIL";
-                    
+                    TestResult.Result = "FAIL";                   
                 }
 
-            }            
+                Log.PrintLog(this, TestResult.Result + " : " + TestResult.Measured, LogDetailLevel.LogRelevant);
+
+            }
             else
             {
                 TestStatusUpdate(MTKTestMessageType.Failure, "NoConnectionModeSet");

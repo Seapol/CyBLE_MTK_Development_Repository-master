@@ -1,6 +1,7 @@
 ﻿using CypressSemiconductor.ChinaManufacturingTest;
 using System;
 
+
 namespace CyBLE_MTK_Application
 {
     public class MTKInstruments
@@ -108,6 +109,15 @@ namespace CyBLE_MTK_Application
 
             }
 
+            if (swConnected && dmmConnected)
+            {
+                AlldevReady = true;
+            }
+            else
+            {
+                
+            }
+
             if (AlldevReady)
             {
                 try
@@ -118,21 +128,33 @@ namespace CyBLE_MTK_Application
                     switch (DUTCurrent.unit)
                     {
                         case CurrentUnit.A:
+                            MEASCurrent.average = Math.Abs(MEASCurrent.average);
+                            MEASCurrent.max = Math.Abs(MEASCurrent.max);
+                            MEASCurrent.min = Math.Abs(MEASCurrent.min);
                             DUTCurrent.average = (double)Math.Round((MEASCurrent.average) * MeasUnitMultipler, 2);
                             DUTCurrent.max = (double)Math.Round((MEASCurrent.max) * MeasUnitMultipler, 2);
                             DUTCurrent.min = (double)Math.Round((MEASCurrent.min) * MeasUnitMultipler, 2);
                             break;
                         case CurrentUnit.mA:
+                            MEASCurrent.average = Math.Abs(MEASCurrent.average);
+                            MEASCurrent.max = Math.Abs(MEASCurrent.max);
+                            MEASCurrent.min = Math.Abs(MEASCurrent.min);
                             DUTCurrent.average = (double)Math.Round((MEASCurrent.average), 2);
                             DUTCurrent.max = (double)Math.Round((MEASCurrent.max), 2);
                             DUTCurrent.min = (double)Math.Round((MEASCurrent.min), 2);
                             break;
                         case CurrentUnit.uA:
+                            MEASCurrent.average = Math.Abs(MEASCurrent.average);
+                            MEASCurrent.max = Math.Abs(MEASCurrent.max);
+                            MEASCurrent.min = Math.Abs(MEASCurrent.min);
                             DUTCurrent.average = (double)Math.Round((MEASCurrent.average) / MeasUnitMultipler, 2);
                             DUTCurrent.max = (double)Math.Round((MEASCurrent.max) / MeasUnitMultipler, 2);
                             DUTCurrent.min = (double)Math.Round((MEASCurrent.min) / MeasUnitMultipler, 2);
                             break;
                         case CurrentUnit.nA:
+                            MEASCurrent.average = Math.Abs(MEASCurrent.average);
+                            MEASCurrent.max = Math.Abs(MEASCurrent.max);
+                            MEASCurrent.min = Math.Abs(MEASCurrent.min);
                             DUTCurrent.average = (double)Math.Round((MEASCurrent.average) / MeasUnitMultipler/ MeasUnitMultipler, 2);
                             DUTCurrent.max = (double)Math.Round((MEASCurrent.max) / MeasUnitMultipler / MeasUnitMultipler, 2);
                             DUTCurrent.min = (double)Math.Round((MEASCurrent.min) / MeasUnitMultipler / MeasUnitMultipler, 2);
@@ -196,7 +218,7 @@ namespace CyBLE_MTK_Application
             catch (Exception)
             {
 
-                throw;
+                Logger.PrintLog(MTKInstruments.sw, "", LogDetailLevel.LogRelevant);
             }
 
         }

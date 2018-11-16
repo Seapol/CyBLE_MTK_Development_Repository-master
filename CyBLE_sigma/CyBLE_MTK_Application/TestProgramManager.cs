@@ -691,7 +691,14 @@ namespace CyBLE_MTK_Application
             }
             else
             {
-                RetVal = TestProgram[TestIndex].RunTest();
+                if (DUTSerialPorts[_CurrentDUT].IsOpen)
+                {
+                    RetVal = TestProgram[TestIndex].RunTest();
+                }
+                else
+                {
+                    RetVal = MTKTestError.IgnoringDUT;
+                }
             }
 
             
