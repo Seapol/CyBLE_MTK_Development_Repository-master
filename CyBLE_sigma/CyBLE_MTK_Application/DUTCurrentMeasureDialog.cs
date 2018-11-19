@@ -12,31 +12,40 @@ namespace CyBLE_MTK_Application
     public partial class DUTCurrentMeasureDialog : Form
     {
 
-        //private MTKTestDUTCurrentMeasure _DutCurrMeas;
+        private MTKTestDUTCurrentMeasure mTKTestDUTCurrentMeasure;
 
         public DUTCurrentMeasureDialog()
         {
             InitializeComponent();
 
-            numericUpDownSampleInterval.Value = CyBLE_MTK_Application.Properties.Settings.Default.IntervalBetweenDUTCurrentMeasure;
-            comboBox_overall_condition.Text = CyBLE_MTK_Application.Properties.Settings.Default.DUTCurrentMeasureOverallPassCondition;
-            numericUpDownDelayBeforeTest.Value = CyBLE_MTK_Application.Properties.Settings.Default.DelayInMSBeforeDUTCurrentMeasure;
-            numericUpDownUpperlimit.Value = int.Parse(CyBLE_MTK_Application.Properties.Settings.Default.DUTCurrentUpperLimitMilliAmp.ToString());
-            numericUpDownLowerlimit.Value = int.Parse(CyBLE_MTK_Application.Properties.Settings.Default.DUTCurrentLowerLimitMilliAmp.ToString());
-            numericUpDownSampleCount.Value = int.Parse(CyBLE_MTK_Application.Properties.Settings.Default.SamplesCountForDUTCurrentMeasure.ToString());
+            mTKTestDUTCurrentMeasure = new MTKTestDUTCurrentMeasure();
+
+            //numericUpDownSampleInterval.Value = CyBLE_MTK_Application.Properties.Settings.Default.IntervalBetweenDUTCurrentMeasure;
+            //comboBox_overall_condition.Text = CyBLE_MTK_Application.Properties.Settings.Default.DUTCurrentMeasureOverallPassCondition;
+            //numericUpDownDelayBeforeTest.Value = CyBLE_MTK_Application.Properties.Settings.Default.DelayInMSBeforeDUTCurrentMeasure;
+            //numericUpDownUpperlimit.Value = int.Parse(CyBLE_MTK_Application.Properties.Settings.Default.DUTCurrentUpperLimitMilliAmp.ToString());
+            //numericUpDownLowerlimit.Value = int.Parse(CyBLE_MTK_Application.Properties.Settings.Default.DUTCurrentLowerLimitMilliAmp.ToString());
+            //numericUpDownSampleCount.Value = int.Parse(CyBLE_MTK_Application.Properties.Settings.Default.SamplesCountForDUTCurrentMeasure.ToString());
+
+        }
+
+        public DUTCurrentMeasureDialog(MTKTestDUTCurrentMeasure NewmTKTestDUTCurrentMeasure) : this()
+        {
+
+            mTKTestDUTCurrentMeasure = NewmTKTestDUTCurrentMeasure;
 
         }
 
         private void OKbtn_DUTCurrentMeasureDialog_Click(object sender, EventArgs e)
         {
-            MTKTestDUTCurrentMeasure.DUTCurrentUpperLimitMilliAmp = double.Parse(numericUpDownUpperlimit.Text);
-            MTKTestDUTCurrentMeasure.DUTCurrentLowerLimitMilliAmp = double.Parse(numericUpDownLowerlimit.Text);
-            MTKTestDUTCurrentMeasure.DelayBeforeTest = int.Parse(numericUpDownDelayBeforeTest.Text);
-            MTKTestDUTCurrentMeasure.DelayAfterTest = int.Parse(numericUpDownDelayAfterTest.Text);
-            MTKTestDUTCurrentMeasure.IntervalInMS = int.Parse(numericUpDownSampleInterval.Text);
-            MTKTestDUTCurrentMeasure.SamplesCount = int.Parse(numericUpDownSampleCount.Text);
-            MTKTestDUTCurrentMeasure.criterion_per_sample = comboBox_criteria_per_sample.Text;
-            MTKTestDUTCurrentMeasure.overallpass_condition = comboBox_overall_condition.Text;
+            mTKTestDUTCurrentMeasure.DUTCurrentUpperLimitMilliAmp = double.Parse(numericUpDownUpperlimit.Text);
+            mTKTestDUTCurrentMeasure.DUTCurrentLowerLimitMilliAmp = double.Parse(numericUpDownLowerlimit.Text);
+            mTKTestDUTCurrentMeasure.DelayBeforeTest = int.Parse(numericUpDownDelayBeforeTest.Text);
+            mTKTestDUTCurrentMeasure.DelayAfterTest = int.Parse(numericUpDownDelayAfterTest.Text);
+            mTKTestDUTCurrentMeasure.IntervalInMS = int.Parse(numericUpDownSampleInterval.Text);
+            mTKTestDUTCurrentMeasure.SamplesCount = int.Parse(numericUpDownSampleCount.Text);
+            mTKTestDUTCurrentMeasure.criterion_per_sample = comboBox_criteria_per_sample.Text;
+            mTKTestDUTCurrentMeasure.overallpass_condition = comboBox_overall_condition.Text;
             
 
             //CyBLE_MTK_Application.Properties.Settings.Default.IntervalBetweenDUTCurrentMeasure = int.Parse(numericUpDownInterval.Text);
@@ -61,6 +70,21 @@ namespace CyBLE_MTK_Application
         private void numericUpDownRepeat_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+
+            numericUpDownUpperlimit.Value = (decimal)mTKTestDUTCurrentMeasure.DUTCurrentUpperLimitMilliAmp;
+            numericUpDownLowerlimit.Value = (decimal)mTKTestDUTCurrentMeasure.DUTCurrentLowerLimitMilliAmp;
+            numericUpDownDelayBeforeTest.Value = mTKTestDUTCurrentMeasure.DelayBeforeTest;
+            numericUpDownDelayAfterTest.Value = mTKTestDUTCurrentMeasure.DelayAfterTest;
+            numericUpDownSampleInterval.Value = mTKTestDUTCurrentMeasure.IntervalInMS;
+            numericUpDownSampleCount.Value = mTKTestDUTCurrentMeasure.SamplesCount;
+            comboBox_criteria_per_sample.Text = mTKTestDUTCurrentMeasure.criterion_per_sample;
+            comboBox_overall_condition.Text = mTKTestDUTCurrentMeasure.overallpass_condition;
+
+            base.OnLoad(e);
         }
     }
 }

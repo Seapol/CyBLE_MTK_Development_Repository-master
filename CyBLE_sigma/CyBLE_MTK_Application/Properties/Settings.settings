@@ -467,7 +467,7 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="DUTCurrentLowerLimitMilliAmp" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">7</Value>
+      <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="DUTCurrentUpperLimitMilliAmp" Type="System.Double" Scope="User">
       <Value Profile="(Default)">20</Value>
@@ -485,7 +485,7 @@
       <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="IsSetupMTKInstrumentsInTheMTKBegin" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="DUTCurrentMeasureOverallPassCondition" Type="System.String" Scope="User">
       <Value Profile="(Default)">ALL_SAMPLES</Value>

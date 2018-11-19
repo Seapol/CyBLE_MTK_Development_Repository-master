@@ -691,7 +691,7 @@ namespace CyBLE_MTK_Application
             //add by cysp for MTKTestDUTCurrentMeasure
             else if (TestProgram[TestIndex].ToString() == "MTKTestDUTCurrentMeasure")
             {
-                DUTCurrentMeasureDialog temp = new DUTCurrentMeasureDialog();
+                DUTCurrentMeasureDialog temp = new DUTCurrentMeasureDialog((MTKTestDUTCurrentMeasure)TestProgram[TestIndex]);
                 if (temp.ShowDialog() == DialogResult.OK)
                 {
                     return true;

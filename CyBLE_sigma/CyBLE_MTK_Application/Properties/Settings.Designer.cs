@@ -1110,7 +1110,7 @@ namespace CyBLE_MTK_Application.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("7")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
         public double DUTCurrentLowerLimitMilliAmp {
             get {
                 return ((double)(this["DUTCurrentLowerLimitMilliAmp"]));
@@ -1182,7 +1182,7 @@ namespace CyBLE_MTK_Application.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool IsSetupMTKInstrumentsInTheMTKBegin {
             get {
                 return ((bool)(this["IsSetupMTKInstrumentsInTheMTKBegin"]));

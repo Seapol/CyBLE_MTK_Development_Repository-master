@@ -63,6 +63,7 @@ namespace CyBLE_MTK_Application
             {
                 sw = new Agilent();
                 SwConnected = sw.InitializeU2751A_WELLA(SW_alias);
+                sw.SetRelayWellA_ALLCLOSE();
                 //sw.InitializeU2651A(SW_alias);
             }
             catch (Exception ex)
@@ -77,7 +78,10 @@ namespace CyBLE_MTK_Application
             ConnectDMM();
             ConnectSwitch();
 
-
+            if (dmmConnected&&swConnected)
+            {
+                AlldevReady = true;
+            }
 
         }
 

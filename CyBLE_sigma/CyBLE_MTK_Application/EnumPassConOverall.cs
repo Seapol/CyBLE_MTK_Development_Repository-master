@@ -7,7 +7,7 @@ namespace CyBLE_MTK_Application
 {
     public enum EnumPassConOverall
     {
-        SINGLE_PASS = 0,
-        ALL_PASS = 1
+        ONE_SAMPLE = 0,
+        ALL_SAMPLES = 1
     }
 }

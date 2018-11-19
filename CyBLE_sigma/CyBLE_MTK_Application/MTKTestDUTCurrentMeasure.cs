@@ -10,7 +10,7 @@ using CypressSemiconductor.ChinaManufacturingTest;
 
 namespace CyBLE_MTK_Application
 {
-    class MTKTestDUTCurrentMeasure : MTKTest
+    public class MTKTestDUTCurrentMeasure : MTKTest
     {
 
 
@@ -22,20 +22,20 @@ namespace CyBLE_MTK_Application
         /// </summary>
         /// 
 
-        public static double DUTCurrentUpperLimitMilliAmp = CyBLE_MTK_Application.Properties.Settings.Default.DUTCurrentUpperLimitMilliAmp;
-        public static double DUTCurrentLowerLimitMilliAmp = CyBLE_MTK_Application.Properties.Settings.Default.DUTCurrentLowerLimitMilliAmp;
-        public static double DUTCurrentDeepSleepLimitMilliAmp = CyBLE_MTK_Application.Properties.Settings.Default.DUTCurrentDeepSleepLimitMilliAmp;
+        public double DUTCurrentUpperLimitMilliAmp = CyBLE_MTK_Application.Properties.Settings.Default.DUTCurrentUpperLimitMilliAmp;
+        public double DUTCurrentLowerLimitMilliAmp = CyBLE_MTK_Application.Properties.Settings.Default.DUTCurrentLowerLimitMilliAmp;
+        public double DUTCurrentDeepSleepLimitMilliAmp = CyBLE_MTK_Application.Properties.Settings.Default.DUTCurrentDeepSleepLimitMilliAmp;
 
-        public static string Dmm_Alias = CyBLE_MTK_Application.Properties.Settings.Default.DMM_Alias;
-        public static string Switch_Alias = CyBLE_MTK_Application.Properties.Settings.Default.Switch_Alias;
-        public static int DelayBeforeTest = CyBLE_MTK_Application.Properties.Settings.Default.DelayInMSBeforeDUTCurrentMeasure;
-        public static int DelayAfterTest = CyBLE_MTK_Application.Properties.Settings.Default.DelayInMSBeforeDUTCurrentMeasure;
-        public static int SamplesCount = CyBLE_MTK_Application.Properties.Settings.Default.SamplesCountForDUTCurrentMeasure;
-        public static string overallpass_condition = CyBLE_MTK_Application.Properties.Settings.Default.DUTCurrentMeasureOverallPassCondition;
-        public static string criterion_per_sample = CyBLE_MTK_Application.Properties.Settings.Default.DUTCurrentMeasureCriteriaPerSample;
+        public string Dmm_Alias = CyBLE_MTK_Application.Properties.Settings.Default.DMM_Alias;
+        public string Switch_Alias = CyBLE_MTK_Application.Properties.Settings.Default.Switch_Alias;
+        public int DelayBeforeTest = CyBLE_MTK_Application.Properties.Settings.Default.DelayInMSBeforeDUTCurrentMeasure;
+        public int DelayAfterTest = CyBLE_MTK_Application.Properties.Settings.Default.DelayInMSBeforeDUTCurrentMeasure;
+        public int SamplesCount = CyBLE_MTK_Application.Properties.Settings.Default.SamplesCountForDUTCurrentMeasure;
+        public string overallpass_condition = CyBLE_MTK_Application.Properties.Settings.Default.DUTCurrentMeasureOverallPassCondition;
+        public string criterion_per_sample = CyBLE_MTK_Application.Properties.Settings.Default.DUTCurrentMeasureCriteriaPerSample;
 
-        public static int IntervalInMS = CyBLE_MTK_Application.Properties.Settings.Default.IntervalBetweenDUTCurrentMeasure;
-        public static string curr_unit = CyBLE_MTK_Application.Properties.Settings.Default.DUTCurrentMeasureUnit;
+        public int IntervalInMS = CyBLE_MTK_Application.Properties.Settings.Default.IntervalBetweenDUTCurrentMeasure;
+        public string curr_unit = CyBLE_MTK_Application.Properties.Settings.Default.DUTCurrentMeasureUnit;
 
 
 
@@ -73,7 +73,7 @@ namespace CyBLE_MTK_Application
         {
             NumberOfDUTs = 8;
             CurrentDUT = 0;
-            TestParameterCount = 3;
+            TestParameterCount = 8;
 
             if (CyBLE_MTK_Application.Properties.Settings.Default.DUTCurrentDeepSleepLimitMilliAmp <= 0)
             {
@@ -123,7 +123,17 @@ namespace CyBLE_MTK_Application
                 case 1:
                     return DUTCurrentLowerLimitMilliAmp.ToString();
                 case 2:
-                    return DUTCurrentDeepSleepLimitMilliAmp.ToString();
+                    return DelayBeforeTest.ToString();
+                case 3:
+                    return DelayAfterTest.ToString();
+                case 4:
+                    return SamplesCount.ToString();
+                case 5:
+                    return IntervalInMS.ToString();
+                case 6:
+                    return criterion_per_sample.ToString();
+                case 7:
+                    return overallpass_condition.ToString();
             }
             return base.GetTestParameter(TestParameterIndex);
         }
@@ -137,7 +147,17 @@ namespace CyBLE_MTK_Application
                 case 1:
                     return "DUTCurrentLowerLimitMilliAmp";
                 case 2:
-                    return "DUTCurrentDeepSleepLimitMilliAmp";
+                    return "DelayBeforeTest";
+                case 3:
+                    return "DelayAfterTest";
+                case 4:
+                    return "SamplesCount";
+                case 5:
+                    return "IntervalInMS";
+                case 6:
+                    return "criterion_per_sample";
+                case 7:
+                    return "overallpass_condition";
             }
             return base.GetTestParameterName(TestParameterIndex);
         }
@@ -157,7 +177,22 @@ namespace CyBLE_MTK_Application
                     DUTCurrentLowerLimitMilliAmp = double.Parse(ParameterValue);
                     return true;
                 case 2:
-                    DUTCurrentDeepSleepLimitMilliAmp = double.Parse(ParameterValue);
+                    DelayBeforeTest = int.Parse(ParameterValue);
+                    return true;
+                case 3:
+                    DelayAfterTest = int.Parse(ParameterValue);
+                    return true;
+                case 4:
+                    SamplesCount = int.Parse(ParameterValue);
+                    return true;
+                case 5:
+                    IntervalInMS = int.Parse(ParameterValue);
+                    return true;
+                case 6:
+                    criterion_per_sample = ParameterValue;
+                    return true;
+                case 7:
+                    overallpass_condition = ParameterValue;
                     return true;
             }
             return false;
@@ -181,7 +216,7 @@ namespace CyBLE_MTK_Application
         private MTKTestError RunTestUART()
         {
             //TO DO something...
-            MTKTestError RetVal = MTKTestError.TestFailed;
+            MTKTestError RetVal = MTKTestError.Pending;
 
             try
             {
@@ -189,7 +224,6 @@ namespace CyBLE_MTK_Application
                 MTKInstruments.DUTCurrent = MTKInstruments.MeasureChannelCurrent(CurrentDUT);
 
 
-                RetVal = MTKTestError.Pending;          //Pending for Pass or Fail but confirm there is no problem on MTKInstruments.MeasureChannelCurrent(CurrentDUT)
 
                 return RetVal;
 
@@ -290,7 +324,7 @@ namespace CyBLE_MTK_Application
 
         public override MTKTestError RunTest()
         {
-            MTKTestError RetVal = MTKTestError.TestFailed;
+            MTKTestError RetVal = MTKTestError.NoError;
 
             this.InitializeTestResult();
 
@@ -304,9 +338,11 @@ namespace CyBLE_MTK_Application
             {
                 int loop = SamplesCount;
 
-                if (overallpass_condition.ToUpper() == EnumPassConOverall.SINGLE_PASS.ToString())
+                
+
+                if (overallpass_condition.ToUpper() == EnumPassConOverall.ONE_SAMPLE.ToString())
                 {
-                    while (loop >= 0)
+                    while (loop > 0)
                     {
                         RetVal = RunTestUART();
                         loop--;
@@ -324,11 +360,18 @@ namespace CyBLE_MTK_Application
                     while (loop > 0)
                     {
                         RetVal = RunTestUART();
-                        loop--;
-                        if (!DoesSamplePass(MTKInstruments.DUTCurrent) && RetVal == MTKTestError.Pending)
+
+                        if (RetVal != MTKTestError.Pending)
                         {
                             RetVal = MTKTestError.TestFailed;
-                            //break;
+                            break;
+                        }
+
+                        loop--;
+                        if (!DoesSamplePass(MTKInstruments.DUTCurrent))
+                        {
+                            RetVal = MTKTestError.TestFailed;
+                            break;
                         }
                         else
                         {
@@ -336,7 +379,7 @@ namespace CyBLE_MTK_Application
                             RetVal = MTKTestError.NoError;
                             continue;
                         }
-
+                        
                     }
                 }
                 
