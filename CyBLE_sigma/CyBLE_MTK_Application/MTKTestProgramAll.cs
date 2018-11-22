@@ -284,7 +284,12 @@ namespace CyBLE_MTK_Application
                 //}
 
             }
-
+            else
+            {
+                TestResult.Result = "DONE";
+                TestResultUpdate(TestResult);
+                TestStatusUpdate(MTKTestMessageType.Complete, "DONE");
+            }
 
 
 
@@ -475,7 +480,7 @@ namespace CyBLE_MTK_Application
                     }
                     return_value = false;
 
-                    TestResultUpdate(TestResult);
+                    //TestResultUpdate(TestResult);
                 }
                 else if (ErrDUT[i] == MTKTestError.NoError && CyBLE_MTK.DUTsTestFlag[i])
                 {
@@ -492,7 +497,7 @@ namespace CyBLE_MTK_Application
                     }
                     
                     TestResult.Result = "PASS";
-                    TestResultUpdate(TestResult);
+                    //TestResultUpdate(TestResult);
 
 
                 }

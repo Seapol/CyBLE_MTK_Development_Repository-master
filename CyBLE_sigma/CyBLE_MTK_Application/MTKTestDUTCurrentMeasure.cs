@@ -43,7 +43,7 @@ namespace CyBLE_MTK_Application
         //private const UInt16 ERRORCODE_DUTCurrentLowerLimitMilliAmp_Failure = 0xA500;
         //private const UInt16 ERRORCODE_DUTCurrentDeepSleepLimitMilliAmp_Failure = 0xA511;
 
-        public static UInt16 ERRORCODE_DUTCurrentMeasureFailure;
+        public static UInt16 ERRORCODE_DUTCurrentMeasureFailure = ECCS.ERRORCODE_DUT_NOT_TEST;
 
         private string sample_failure_result_message;
 
@@ -317,7 +317,7 @@ namespace CyBLE_MTK_Application
 
             }
 
-
+            MTKTestTmplSFCSErrCode = ERRORCODE_DUTCurrentMeasureFailure;
 
             return false;
         }
@@ -387,6 +387,7 @@ namespace CyBLE_MTK_Application
                 //Overall TestResult
                 if (RetVal == MTKTestError.NoError)
                 {
+                    ERRORCODE_DUTCurrentMeasureFailure = ECCS.ERRORCODE_ALL_PASS;
                     TestStatusUpdate(MTKTestMessageType.Success, "Pass");
                     TestResult.Result = "Pass";
                 }
@@ -397,7 +398,7 @@ namespace CyBLE_MTK_Application
                 }
 
                 Log.PrintLog(this, TestResult.Result + " : " + TestResult.Measured, LogDetailLevel.LogRelevant);
-
+                MTKTestTmplSFCSErrCode = ERRORCODE_DUTCurrentMeasureFailure;
             }
             else
             {

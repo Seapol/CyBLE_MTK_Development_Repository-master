@@ -164,6 +164,14 @@ namespace CyBLE_MTK_Application
             AnritsuSerialPort = AnritsuPort;
         }
 
+        public TestProgramManager(LogManager Logger, SerialPort MTKPort, SerialPort DUTPort)
+            : this(Logger)
+        {
+            MTKSerialPort = MTKPort;
+            DUTSerialPort = DUTPort;
+            
+        }
+
         public bool SaveTestProgram(bool SaveAs)
         {
             Log.PrintLog(this, "Saving test program.", LogDetailLevel.LogRelevant);

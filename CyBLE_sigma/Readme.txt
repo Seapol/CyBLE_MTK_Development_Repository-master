@@ -4,6 +4,8 @@ Release notes:
 2.Move AppReleaseNotes to Readme.txt
 3.Truncate different model name from SN string for different factory
 4.Degrade .NET Framework Platform from 4.7.1 to 4.0 so as to be compatible with old computers
+5.DUTCurrentMeasureTest is mature
+6.DUT Test log is good
 
 2018-10-25 (v4.0.6)
 1.change the length of Model from 8 to 9.

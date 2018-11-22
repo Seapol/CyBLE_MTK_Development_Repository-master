@@ -194,19 +194,19 @@ namespace CyBLE_MTK_Application
             DUTSerialPortDialog.OnDUTConnectionStatusChange += new SerialPortSettingsDialog.ConnectionEventHandler(MTKSerialPortDialog_OnDUTConnectionStatusChange);
             SplashScreen.LoadStatus += 8;
 
-            SplashScreen.LoadMessage = "Setting up Anritsu serial port dialog...";
-            AnritsuSerialPort = new CyBLEMTKSerialPort(Logger);
-            //AnritsuSerialPortDialog.Text = "Anrtisu Serial Port Setting";
-            //AnritsuSerialPortDialog.CloseOnConnect = false;
-            AnritsuSerialPort.SerialPortType = PortType.Anritsu;
-            AnritsuSerialPort.ValidatePort = true;
-            AnritsuSerialPort.DeviceSerialPort.BaudRate = 57600;
-            AnritsuSerialPort.DeviceSerialPort.Handshake = Handshake.RequestToSend;
-            if (AnritsuSerialPort.OpenPortByName(CyBLE_MTK_Application.Properties.Settings.Default.AnritsuSerialPort))
-            {
-                SplashScreen.LoadMessage = "Applying Anritsu settings...";
-                SetupAnritsu();
-            }
+            //SplashScreen.LoadMessage = "Setting up Anritsu serial port dialog...";
+            //AnritsuSerialPort = new CyBLEMTKSerialPort(Logger);
+            ////AnritsuSerialPortDialog.Text = "Anrtisu Serial Port Setting";
+            ////AnritsuSerialPortDialog.CloseOnConnect = false;
+            //AnritsuSerialPort.SerialPortType = PortType.Anritsu;
+            //AnritsuSerialPort.ValidatePort = true;
+            //AnritsuSerialPort.DeviceSerialPort.BaudRate = 57600;
+            //AnritsuSerialPort.DeviceSerialPort.Handshake = Handshake.RequestToSend;
+            //if (AnritsuSerialPort.OpenPortByName(CyBLE_MTK_Application.Properties.Settings.Default.AnritsuSerialPort))
+            //{
+            //    SplashScreen.LoadMessage = "Applying Anritsu settings...";
+            //    SetupAnritsu();
+            //}
             SplashScreen.LoadStatus += 8;
 
             SplashScreen.LoadMessage = "Setting up DUT Mux serial port...";
@@ -262,7 +262,7 @@ namespace CyBLE_MTK_Application
             SplashScreen.LoadMessage = "Setting up DUT programmers and serial ports...";
             DUTProgrammers = new List<MTKPSoCProgrammer>();
             DUTSerialPorts = new List<SerialPort>();
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < 8; i++)
             {
                 DUTProgrammers.Add(new MTKPSoCProgrammer(Logger));
                 if (CyBLE_MTK_Application.Properties.Settings.Default.DUTProgrammerName[i] != "Configure...")
@@ -278,37 +278,37 @@ namespace CyBLE_MTK_Application
                 }
                 DUTSerialPorts.Add(new CyBLEMTKSerialPort(Logger));
                 DUTSerialPorts[i].BaudRate = 115200;
-                SplashScreen.LoadMessage = "Setting up DUT programmers and serial ports (" + (i + 1).ToString() + "/16)";
+                SplashScreen.LoadMessage = "Setting up DUT programmers and serial ports (" + (i + 1).ToString() + "/8)";
                 if ((i % 2) == 0)
                 {
                     SplashScreen.LoadStatus += 5;
                 }
             }
 
-            SplashScreen.LoadMessage = "Setting up BD Address prgorammer...";
-            MTKBDAProgrammer = new MTKTestBDA(Logger);
-            MTKBDAProgrammer.AutoIncrementBDA = CyBLE_MTK_Application.Properties.Settings.Default.BDAIncrement;
-            MTKBDAProgrammer.UseProgrammer = CyBLE_MTK_Application.Properties.Settings.Default.BDAUseProgrammer;
-            BDATextBox.Text = CyBLE_MTK_Application.Properties.Settings.Default.BDA;
-            MTKBDAProgrammer.BDAddress = BDATextBox.ToByteArray();
-            MTKBDAProgrammer.OnBDAChange += new MTKTestBDA.BDAChangeEventHandler(MTKBDAProgrammer_OnBDAChange);
+            //SplashScreen.LoadMessage = "Setting up BD Address prgorammer...";
+            //MTKBDAProgrammer = new MTKTestBDA(Logger);
+            //MTKBDAProgrammer.AutoIncrementBDA = CyBLE_MTK_Application.Properties.Settings.Default.BDAIncrement;
+            //MTKBDAProgrammer.UseProgrammer = CyBLE_MTK_Application.Properties.Settings.Default.BDAUseProgrammer;
+            //BDATextBox.Text = CyBLE_MTK_Application.Properties.Settings.Default.BDA;
+            //MTKBDAProgrammer.BDAddress = BDATextBox.ToByteArray();
+            //MTKBDAProgrammer.OnBDAChange += new MTKTestBDA.BDAChangeEventHandler(MTKBDAProgrammer_OnBDAChange);
 
-            MTKBDAProgrammer.BDAProgrammer.GlobalProgrammerSelected = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerGlobal;
-            if ((CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerGlobal == false) &&
-                (CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerName != "Configure..."))
-            {
-                MTKBDAProgrammer.BDAProgrammer.SelectedProgrammer = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerName;
-                MTKBDAProgrammer.BDAProgrammer.SelectedVoltageSetting = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerVoltage;
-                MTKBDAProgrammer.BDAProgrammer.SelectedAquireMode = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerPM;
-                MTKBDAProgrammer.BDAProgrammer.SelectedConnectorType = int.Parse(CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerConn);
-                MTKBDAProgrammer.BDAProgrammer.SelectedClock = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerClock;
-                MTKBDAProgrammer.BDAProgrammer.StringToPA(CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerPA);
-                MTKBDAProgrammer.BDAProgrammer.ValidateAfterProgramming = bool.Parse(CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerVerify);
-                MTKBDAProgrammer.BDAProgrammer.SelectedHEXFilePath = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerHexPath;
-            }
-            BDAWriteButton.Enabled = false;
-            BDAConfigLabel.Text = MTKBDAProgrammer.GetDisplayText();
-            SplashScreen.LoadStatus += 8;
+            //MTKBDAProgrammer.BDAProgrammer.GlobalProgrammerSelected = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerGlobal;
+            //if ((CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerGlobal == false) &&
+            //    (CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerName != "Configure..."))
+            //{
+            //    MTKBDAProgrammer.BDAProgrammer.SelectedProgrammer = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerName;
+            //    MTKBDAProgrammer.BDAProgrammer.SelectedVoltageSetting = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerVoltage;
+            //    MTKBDAProgrammer.BDAProgrammer.SelectedAquireMode = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerPM;
+            //    MTKBDAProgrammer.BDAProgrammer.SelectedConnectorType = int.Parse(CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerConn);
+            //    MTKBDAProgrammer.BDAProgrammer.SelectedClock = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerClock;
+            //    MTKBDAProgrammer.BDAProgrammer.StringToPA(CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerPA);
+            //    MTKBDAProgrammer.BDAProgrammer.ValidateAfterProgramming = bool.Parse(CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerVerify);
+            //    MTKBDAProgrammer.BDAProgrammer.SelectedHEXFilePath = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerHexPath;
+            //}
+            //BDAWriteButton.Enabled = false;
+            //BDAConfigLabel.Text = MTKBDAProgrammer.GetDisplayText();
+            //SplashScreen.LoadStatus += 8;
 
             SplashScreen.LoadMessage = "Setting up preferences dialog...";
             MTKPreferences = new PreferencesDialog(this, Logger);
@@ -317,7 +317,9 @@ namespace CyBLE_MTK_Application
             //cysp: IsSetupMTKInstrumentsInTheMTKBegin
             if (CyBLE_MTK_Application.Properties.Settings.Default.IsSetupMTKInstrumentsInTheMTKBegin == true)
             {
+
                 SplashScreen.LoadMessage = "Setting up DMM and Switch ...";
+                SplashScreen.LoadStatus += 4;
 
                 try
                 {
@@ -351,7 +353,7 @@ namespace CyBLE_MTK_Application
             SplashScreen.LoadStatus += 4;
 
             SplashScreen.LoadMessage = "Setting up test manager...";
-            MTKTestProgram = new TestProgramManager(Logger, MTKSerialPortDialog.DeviceSerialPort, DUTSerialPortDialog.DeviceSerialPort, AnritsuSerialPort.DeviceSerialPort);
+            MTKTestProgram = new TestProgramManager(Logger, MTKSerialPortDialog.DeviceSerialPort, DUTSerialPortDialog.DeviceSerialPort);
             MTKTestProgram.SupervisorMode = this.SupervisorModeMenuItem.Checked;
             MTKTestProgram.IgnoreDUT = CyBLE_MTK_Application.Properties.Settings.Default.IgnoreDUTs;
             MTKTestProgram.OnTestProgramRunError += new TestProgramManager.TestProgramRunErrorEventHandler(MTKTestProgram_OnTestProgramRunError); 
@@ -1543,7 +1545,7 @@ namespace CyBLE_MTK_Application
                 //MTKTestProgram.TestProgram = EditTests.CopyTestList(EditTests.TestProgramList);
                 MTKTestProgram.TestProgramEdited();
                 Logger.PrintLog(this, "Test program edits complete.", LogDetailLevel.LogRelevant);
-                UpdateBDA();
+                //UpdateBDA();
                 return true;
             }
 
@@ -1727,10 +1729,10 @@ namespace CyBLE_MTK_Application
 
             BDATextBox.Enabled = true;
             ConfigBDAButton.Enabled = true;
-            if (MTKBDAProgrammer.BDAProgrammer.SelectedProgrammer != "")
-            {
-                BDAWriteButton.Enabled = true;
-            }
+            //if (MTKBDAProgrammer.BDAProgrammer.SelectedProgrammer != "")
+            //{
+            //    BDAWriteButton.Enabled = true;
+            //}
 
             for (int i = 0; i < (int)CyBLE_MTK_Application.Properties.Settings.Default.NumDUTs; i++)
             {
@@ -2025,6 +2027,8 @@ namespace CyBLE_MTK_Application
                 MTKTestProgram.TestProgram[CurrentTest].OnTestStatusUpdate += new MTKTest.TestStatusUpdateEventHandler(CyBLE_MTK_OnTestStatusUpdate);
                 MTKTestProgram.TestProgram[CurrentTest].OnTestResult -= new MTKTest.TestResultEventHandler(CyBLE_MTK_OnTestResult);
                 MTKTestProgram.TestProgram[CurrentTest].OnTestResult += new MTKTest.TestResultEventHandler(CyBLE_MTK_OnTestResult);
+
+
                 ((MTKTestProgramAll)MTKTestProgram.TestProgram[CurrentTest]).OnProgramAllComplete -= new MTKTestProgramAll.ProgramAllCompleteEventHandler(CyBLE_MTK_OnProgComplete);
                 ((MTKTestProgramAll)MTKTestProgram.TestProgram[CurrentTest]).OnProgramAllComplete += new MTKTestProgramAll.ProgramAllCompleteEventHandler(CyBLE_MTK_OnProgComplete);
                 ((MTKTestProgramAll)MTKTestProgram.TestProgram[CurrentTest]).OnNumTestStatusUpdate -= new MTKTestProgramAll.NumTestStatusUpdateEventHandler(CyBLE_MTK_OnNumTestStatusUpdate);
@@ -2872,7 +2876,7 @@ namespace CyBLE_MTK_Application
                 {
                     MTKSerialPortDialog.StopCheckingConnectionStatus();
                     DUTSerialPortDialog.StopCheckingConnectionStatus();
-                    AnritsuSerialPort.StopCheckingConnectionStatus();
+                    //AnritsuSerialPort.StopCheckingConnectionStatus();
 
 
 
