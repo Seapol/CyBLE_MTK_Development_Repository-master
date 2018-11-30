@@ -262,7 +262,7 @@ namespace CyBLE_MTK_Application
             SplashScreen.LoadMessage = "Setting up DUT programmers and serial ports...";
             DUTProgrammers = new List<MTKPSoCProgrammer>();
             DUTSerialPorts = new List<SerialPort>();
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 16; i++)
             {
                 DUTProgrammers.Add(new MTKPSoCProgrammer(Logger));
                 if (CyBLE_MTK_Application.Properties.Settings.Default.DUTProgrammerName[i] != "Configure...")
@@ -278,37 +278,37 @@ namespace CyBLE_MTK_Application
                 }
                 DUTSerialPorts.Add(new CyBLEMTKSerialPort(Logger));
                 DUTSerialPorts[i].BaudRate = 115200;
-                SplashScreen.LoadMessage = "Setting up DUT programmers and serial ports (" + (i + 1).ToString() + "/8)";
+                SplashScreen.LoadMessage = "Setting up DUT programmers and serial ports (" + (i + 1).ToString() + "/16)";
                 if ((i % 2) == 0)
                 {
                     SplashScreen.LoadStatus += 5;
                 }
             }
 
-            //SplashScreen.LoadMessage = "Setting up BD Address prgorammer...";
-            //MTKBDAProgrammer = new MTKTestBDA(Logger);
-            //MTKBDAProgrammer.AutoIncrementBDA = CyBLE_MTK_Application.Properties.Settings.Default.BDAIncrement;
-            //MTKBDAProgrammer.UseProgrammer = CyBLE_MTK_Application.Properties.Settings.Default.BDAUseProgrammer;
-            //BDATextBox.Text = CyBLE_MTK_Application.Properties.Settings.Default.BDA;
-            //MTKBDAProgrammer.BDAddress = BDATextBox.ToByteArray();
-            //MTKBDAProgrammer.OnBDAChange += new MTKTestBDA.BDAChangeEventHandler(MTKBDAProgrammer_OnBDAChange);
+            SplashScreen.LoadMessage = "Setting up BD Address prgorammer...";
+            MTKBDAProgrammer = new MTKTestBDA(Logger);
+            MTKBDAProgrammer.AutoIncrementBDA = CyBLE_MTK_Application.Properties.Settings.Default.BDAIncrement;
+            MTKBDAProgrammer.UseProgrammer = CyBLE_MTK_Application.Properties.Settings.Default.BDAUseProgrammer;
+            BDATextBox.Text = CyBLE_MTK_Application.Properties.Settings.Default.BDA;
+            MTKBDAProgrammer.BDAddress = BDATextBox.ToByteArray();
+            MTKBDAProgrammer.OnBDAChange += new MTKTestBDA.BDAChangeEventHandler(MTKBDAProgrammer_OnBDAChange);
 
-            //MTKBDAProgrammer.BDAProgrammer.GlobalProgrammerSelected = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerGlobal;
-            //if ((CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerGlobal == false) &&
-            //    (CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerName != "Configure..."))
-            //{
-            //    MTKBDAProgrammer.BDAProgrammer.SelectedProgrammer = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerName;
-            //    MTKBDAProgrammer.BDAProgrammer.SelectedVoltageSetting = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerVoltage;
-            //    MTKBDAProgrammer.BDAProgrammer.SelectedAquireMode = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerPM;
-            //    MTKBDAProgrammer.BDAProgrammer.SelectedConnectorType = int.Parse(CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerConn);
-            //    MTKBDAProgrammer.BDAProgrammer.SelectedClock = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerClock;
-            //    MTKBDAProgrammer.BDAProgrammer.StringToPA(CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerPA);
-            //    MTKBDAProgrammer.BDAProgrammer.ValidateAfterProgramming = bool.Parse(CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerVerify);
-            //    MTKBDAProgrammer.BDAProgrammer.SelectedHEXFilePath = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerHexPath;
-            //}
-            //BDAWriteButton.Enabled = false;
-            //BDAConfigLabel.Text = MTKBDAProgrammer.GetDisplayText();
-            //SplashScreen.LoadStatus += 8;
+            MTKBDAProgrammer.BDAProgrammer.GlobalProgrammerSelected = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerGlobal;
+            if ((CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerGlobal == false) &&
+                (CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerName != "Configure..."))
+            {
+                MTKBDAProgrammer.BDAProgrammer.SelectedProgrammer = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerName;
+                MTKBDAProgrammer.BDAProgrammer.SelectedVoltageSetting = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerVoltage;
+                MTKBDAProgrammer.BDAProgrammer.SelectedAquireMode = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerPM;
+                MTKBDAProgrammer.BDAProgrammer.SelectedConnectorType = int.Parse(CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerConn);
+                MTKBDAProgrammer.BDAProgrammer.SelectedClock = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerClock;
+                MTKBDAProgrammer.BDAProgrammer.StringToPA(CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerPA);
+                MTKBDAProgrammer.BDAProgrammer.ValidateAfterProgramming = bool.Parse(CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerVerify);
+                MTKBDAProgrammer.BDAProgrammer.SelectedHEXFilePath = CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerHexPath;
+            }
+            BDAWriteButton.Enabled = false;
+            BDAConfigLabel.Text = MTKBDAProgrammer.GetDisplayText();
+            SplashScreen.LoadStatus += 8;
 
             SplashScreen.LoadMessage = "Setting up preferences dialog...";
             MTKPreferences = new PreferencesDialog(this, Logger);
@@ -1456,22 +1456,23 @@ namespace CyBLE_MTK_Application
             //    DisconnectProg();
             //}
 
-            ////CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerGlobal = MTKBDAProgrammer.BDAProgrammer.GlobalProgrammerSelected;
-            //if ((MTKBDAProgrammer.BDAProgrammer.GlobalProgrammerSelected == false) && (MTKBDAProgrammer.BDAProgrammer.SelectedProgrammer != ""))
-            //{
-            //    CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerName = MTKBDAProgrammer.BDAProgrammer.SelectedProgrammer;
-            //    CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerVoltage = MTKBDAProgrammer.BDAProgrammer.SelectedVoltageSetting;
-            //    CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerPM = MTKBDAProgrammer.BDAProgrammer.SelectedAquireMode;
-            //    CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerConn = MTKBDAProgrammer.BDAProgrammer.SelectedConnectorType.ToString();
-            //    CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerClock = MTKBDAProgrammer.BDAProgrammer.SelectedClock;
-            //    CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerPA = MTKBDAProgrammer.BDAProgrammer.PAToString();
-            //    CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerVerify = MTKBDAProgrammer.BDAProgrammer.ValidateAfterProgramming.ToString();
-            //    CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerHexPath = MTKBDAProgrammer.BDAProgrammer.SelectedHEXFilePath;
-            //}
-            //else
-            //{
-            //    CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerName = "Configure...";
-            //}
+
+            CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerGlobal = MTKBDAProgrammer.BDAProgrammer.GlobalProgrammerSelected;
+            if ((MTKBDAProgrammer.BDAProgrammer.GlobalProgrammerSelected == false) && (MTKBDAProgrammer.BDAProgrammer.SelectedProgrammer != ""))
+            {
+                CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerName = MTKBDAProgrammer.BDAProgrammer.SelectedProgrammer;
+                CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerVoltage = MTKBDAProgrammer.BDAProgrammer.SelectedVoltageSetting;
+                CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerPM = MTKBDAProgrammer.BDAProgrammer.SelectedAquireMode;
+                CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerConn = MTKBDAProgrammer.BDAProgrammer.SelectedConnectorType.ToString();
+                CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerClock = MTKBDAProgrammer.BDAProgrammer.SelectedClock;
+                CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerPA = MTKBDAProgrammer.BDAProgrammer.PAToString();
+                CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerVerify = MTKBDAProgrammer.BDAProgrammer.ValidateAfterProgramming.ToString();
+                CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerHexPath = MTKBDAProgrammer.BDAProgrammer.SelectedHEXFilePath;
+            }
+            else
+            {
+                CyBLE_MTK_Application.Properties.Settings.Default.BDAProgrammerName = "Configure...";
+            }
 
 
             CyBLE_MTK_Application.Properties.Settings.Default.RecentPath1 = RecentFile1.Text;
@@ -1729,10 +1730,10 @@ namespace CyBLE_MTK_Application
 
             BDATextBox.Enabled = true;
             ConfigBDAButton.Enabled = true;
-            //if (MTKBDAProgrammer.BDAProgrammer.SelectedProgrammer != "")
-            //{
-            //    BDAWriteButton.Enabled = true;
-            //}
+            if (MTKBDAProgrammer.BDAProgrammer.SelectedProgrammer != "")
+            {
+                BDAWriteButton.Enabled = true;
+            }
 
             for (int i = 0; i < (int)CyBLE_MTK_Application.Properties.Settings.Default.NumDUTs; i++)
             {
