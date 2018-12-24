@@ -124,6 +124,7 @@ namespace CyBLE_MTK_Application
             this.CleanLogBtn = new System.Windows.Forms.Button();
             this.LogGroupBox = new System.Windows.Forms.GroupBox();
             this.LogTextBox = new System.Windows.Forms.TextBox();
+            this.toolStripStatusLabel_shopfloorDbEnableStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.MTKMenuStrip.SuspendLayout();
             this.MTKStatStrip.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -448,7 +449,8 @@ namespace CyBLE_MTK_Application
             this.DUTStatus,
             this.toolStripStatusLabel3,
             this.ApplicationStatusLabel,
-            this.ApplicationStatus});
+            this.ApplicationStatus,
+            this.toolStripStatusLabel_shopfloorDbEnableStatus});
             this.MTKStatStrip.Location = new System.Drawing.Point(0, 610);
             this.MTKStatStrip.Name = "MTKStatStrip";
             this.MTKStatStrip.Size = new System.Drawing.Size(924, 22);
@@ -1087,6 +1089,13 @@ namespace CyBLE_MTK_Application
             this.LogTextBox.Size = new System.Drawing.Size(921, 217);
             this.LogTextBox.TabIndex = 6;
             // 
+            // toolStripStatusLabel_shopfloorDbEnableStatus
+            // 
+            this.toolStripStatusLabel_shopfloorDbEnableStatus.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.toolStripStatusLabel_shopfloorDbEnableStatus.Name = "toolStripStatusLabel_shopfloorDbEnableStatus";
+            this.toolStripStatusLabel_shopfloorDbEnableStatus.Size = new System.Drawing.Size(55, 17);
+            this.toolStripStatusLabel_shopfloorDbEnableStatus.Text = "Database";
+            // 
             // CyBLE_MTK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1221,6 +1230,7 @@ namespace CyBLE_MTK_Application
         private System.Windows.Forms.ToolStripMenuItem instrumentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dmmSwitchSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manufacturingModeConfigToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_shopfloorDbEnableStatus;
     }
 }
 

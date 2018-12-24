@@ -129,6 +129,10 @@ namespace CyBLE_MTK_Application
         }
 
 
+        /// <summary>
+        /// SWJShopfloorDB
+        /// </summary>
+        private SFCS_DB_Helper SFCS_DB;
 
 
         public CyBLE_MTK()
@@ -442,7 +446,13 @@ namespace CyBLE_MTK_Application
             SplashScreen.LoadMessage = "Initialization Complete";
 
 
+            ///Shopfloor Access Database
+            ///
 
+            if (CyBLE_MTK_Application.Properties.Settings.Default.ShopfloorDataBaseEnable)
+            {
+                toolStripStatusLabel_shopfloorDbEnableStatus.ForeColor = Color.DarkGreen;
+            }
 
 
         }
@@ -4111,7 +4121,7 @@ namespace CyBLE_MTK_Application
             m_SFCS = new SFCS(Logger);
             m_SFCS = SFCS.GetSFCS(Logger);
 
-
+            SFCS_DB = new SFCS_DB_Helper(Logger);
 
 
 
@@ -4259,6 +4269,17 @@ namespace CyBLE_MTK_Application
                 bool upload = m_SFCS.UploadTestResult(SerialNumber, Model, TesterID, errorcode, socket_no, DUTTestResultToShopfloor, "MTK", MFI_ID);
                 //Logger.PrintLog(this, m_SFCS.GetType().ToString().Substring(22) + " UPLOAD INFO : " + "DUT#" + (i + 1).ToString() + "  SN: " + SerialNumber + "\tModel: " + Model + "\tTesterID: " + TesterID + "\tErrCode: " + errorcode.ToString("X4") + "\tSocket#: " + socket_no + "\tTestResult: " + DUTTestResultToShopfloor + "\t\tStationID: " + "MTK" + "\tMFI_ID: " + MFI_ID, LogDetailLevel.LogRelevant);
                 Logger.PrintLog(this, m_SFCS.GetType().ToString().Substring(22) + " UPLOAD INFO : " + "DUT#" + (i + 1).ToString() + "  SN: " + SerialNumber + "    \tModel: " + Model + "       \tTesterID: " + TesterID + "       \tErrCode: " + errorcode.ToString("X4") + "       \tTestResult: " + DUTTestResultToShopfloor, LogDetailLevel.LogRelevant);
+
+
+                #region ShopfloorAccessDatabase
+                if (CyBLE_MTK_Application.Properties.Settings.Default.ShopfloorDataBaseEnable)
+                {
+                    SFCS_DB.InsertRow(SerialNumber + ","+ Model + "," + "MTK" + "," + errorcode + "," + TesterID + "," + socket_no + "," + MFI_ID + "," + "Omitted" + "," + DUTTestResultToShopfloor);
+                }
+
+                #endregion
+
+
 
 
                 COUNT_ALL++;

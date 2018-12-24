@@ -485,7 +485,7 @@
       <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="IsSetupMTKInstrumentsInTheMTKBegin" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="DUTCurrentMeasureOverallPassCondition" Type="System.String" Scope="User">
       <Value Profile="(Default)">ALL_SAMPLES</Value>
@@ -546,6 +546,12 @@
     </Setting>
     <Setting Name="DUTModelLengthOverride" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="ShopfloorDataBaseEnable" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ShopfloorDataBaseLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\hlksrv\Share\Temp\cysp\temp\\SWJshopfloorDB.mdb</Value>
     </Setting>
   </Settings>
 </SettingsFile>

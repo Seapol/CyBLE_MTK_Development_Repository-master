@@ -1431,5 +1431,17 @@ namespace CyBLE_MTK_Application.Properties {
                 this["DUTModelLengthOverride"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShopfloorDataBaseEnable {
+            get {
+                return ((bool)(this["ShopfloorDataBaseEnable"]));
+            }
+            set {
+                this["ShopfloorDataBaseEnable"] = value;
+            }
+        }
     }
 }

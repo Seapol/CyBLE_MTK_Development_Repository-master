@@ -57,6 +57,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -141,6 +142,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>tree.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>CyBLE_MTK_Application.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Cypress_Link_SQL2005">
@@ -239,6 +243,8 @@
     <Compile Include="DataAnalysisForm.Designer.cs">
       <DependentUpon>DataAnalysisForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DbError.cs" />
+    <Compile Include="DbTable.cs" />
     <Compile Include="DmmSwitchSettingsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -396,6 +402,7 @@
     <Compile Include="SerialPortSettingsDialog.designer.cs">
       <DependentUpon>SerialPortSettingsDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="SFCS_DB_Helper.cs" />
     <Compile Include="Switch_Config_Dialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -523,13 +530,14 @@
       <DependentUpon>TestProgramDialog.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram_DB.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="CyBLE MTK Application_TemporaryKey.pfx" />
     <None Include="CyBLEMTKRobotServer.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
     </None>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

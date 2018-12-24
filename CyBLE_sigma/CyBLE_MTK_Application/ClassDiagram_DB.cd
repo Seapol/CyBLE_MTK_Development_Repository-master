@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CyBLE_MTK_Application.SFCS" Collapsed="true">
+    <Position X="6" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAIAQAAAAAAAAAAAEAAAgBAAAAAAAUABAAAAA=</HashCode>
+      <FileName>SFCS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CyBLE_MTK_Application.SFCS_LOCAL" Collapsed="true">
+    <Position X="3.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>SFCS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CyBLE_MTK_Application.SFCS_SIGMA" Collapsed="true">
+    <Position X="8.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAQAAAAAAAQAAIAAAAAAAAAAAACAAAAIAAA=</HashCode>
+      <FileName>SFCS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CyBLE_MTK_Application.SFCS_FITTEC" Collapsed="true">
+    <Position X="6" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SFCS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CyBLE_MTK_Application.SFCS_DB_Helper">
+    <Position X="11.5" Y="2.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>IAAgAAAAIAAAAAgAAAAAAAAAAAAIAAIAACAAAAAAAAA=</HashCode>
+      <FileName>SFCS_DB_Helper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CyBLE_MTK_Application.DbTable">
+    <Position X="16" Y="4" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DbTable.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SFCS_DB_Helper" />
+    </ShowAsAssociation>
+  </Class>
+  <Enum Name="CyBLE_MTK_Application.DbError">
+    <Position X="16" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAIBAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DbError.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
